@@ -4,6 +4,11 @@ from windows import ImageView
 from tkinter import messagebox
 
 class ImagePresenter:
+    '''
+    This class acts as the presenter in the MVP (Model-View-Presenter) pattern.
+    It connects the model (ImageModel) and the view (ImageView).
+    It handles user interactions and updates the view based on model changes.
+    '''
     def __init__(self, root):
         self.model = ImageModel()
         self.view = ImageView(root, self)

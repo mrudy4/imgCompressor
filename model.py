@@ -3,13 +3,29 @@ from tkinter import filedialog
 from PIL import Image, ImageTk
 
 class ImageModel:
+    '''
+    This class handles the image processing tasks such as loading an image,
+    converting it to grayscale, and compressing it using Singular Value Decomposition (SVD).
+    Compression is done for both grayscale and RGB images.
+    '''
     def __init__(self):
+        '''
+        Initializes the ImageModel class.'''
         self.image = None
         self.grayed_image = None
         self.compressed_image = None
         self.compressed_image_rgb = None
 
     def load_image(self, path):
+        '''
+        Loads an image from the specified path.
+        Converts the image to RGB format.
+        Args:
+            path (str): The path to the image file.
+        Returns:
+            Image: The loaded image in RGB format.
+        Returns False if there is an error loading the image.
+        '''
         try:
             self.image = Image.open(path).convert('RGB')
             return self.image
@@ -18,6 +34,12 @@ class ImageModel:
             return False
 
     def convert_to_grayscale(self):
+        '''
+        Converts the loaded image to grayscale.
+        Returns:
+            Image: The grayscale image.
+        Returns False if there is an error during conversion.
+        '''
         try:
             self.gray_image = self.image.convert('L')
             return self.gray_image
@@ -27,6 +49,14 @@ class ImageModel:
 
     
     def compress_image_svd(self, k):
+        '''
+        Compresses the grayscale image using Singular Value Decomposition (SVD).
+        Args:
+            k (int): The number of singular values to keep for compression.
+            Returns:
+                Image: The compressed grayscale image.
+                Returns False if there is an error during compression.
+        '''
         try :
             image_array = np.array(self.gray_image)
 
@@ -47,6 +77,14 @@ class ImageModel:
             return False
     
     def compress_image_svd_rgb(self, k):
+        '''
+        Compresses the RGB image using Singular Value Decomposition (SVD).
+        Args:
+            k (int): The number of singular values to keep for compression.
+            Returns:
+                Image: The compressed RGB image.
+                Returns False if there is an error during compression.
+        '''
         try:
             image_array = np.array(self.image)
             

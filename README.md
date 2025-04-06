@@ -26,4 +26,5 @@ Then you will be able to check compression.
 ```
 
 ## License
+
 Open-source

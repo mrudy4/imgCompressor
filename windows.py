@@ -3,7 +3,11 @@ from tkinter import filedialog
 from PIL import ImageTk
 
 class ImageView:
+    '''
+    This class contains all the methods and contructors for Tkinter GUI
+    '''
     def __init__(self, root, presenter):
+
         self.presenter = presenter
         self.root = root
         self.root.title("Image App")
